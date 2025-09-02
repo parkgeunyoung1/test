@@ -1,14 +1,9 @@
-T = int(input())
-for test_case in range(1, T + 1):
-    N, K = map(int, input().split())
-    skills = list(map(int, input().split()))
-    skills.sort()
-
-    max_team = 0
-    start = 0
-    for end in range(N):
-        while skills[end] - skills[start] > K:
-            start += 1
-        max_team = max(max_team, end - start + 1)
-
-    print(f"#{test_case} {max_team}")
+T = int(input())                      # T 삽입
+for tc in range(1, T+1):              # tc 생성
+    num = list(map(int, input().split()))  # 숫자열 리스트 생성
+    num_sum = 0          # 초기 숫자합
+    for i in num:        # 숫자열리스트 순회
+        if i % 2 == 1:   # 홀수(나머지가 1)찾기
+            num_sum += i # 홀수 더하기
+ 
+    print(f'#{tc} {num_sum}')
