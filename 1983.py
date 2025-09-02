@@ -17,13 +17,18 @@ for tc in range(1, T+1):                 # tc 생성
         scores[i], scores[max_idx] = scores[max_idx], scores[i]
 
     # --- K번째 학생 순위 찾기 ---
-    rank_index = 0
-    for idx, (stu, _) in enumerate(scores):
+    target_total = 0
+    for stu, total in scores:
         if stu == K:
-            rank_index = idx
+            target_total = total
             break
 
+    rank_index = 0
+    for _, total in scores:
+        if total > target_total:
+            rank_index += 1
     # --- 학점 계산 ---
     bucket = N // 10
     grade_idx = rank_index // bucket
+
     print(f"#{t} {grades[grade_idx]}")
